@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var x = 0;
+        var multi = 1;
+        var click_upgrade_cost = 10;
+        function add_number() {
+            x = x + multi;
+            document.getElementById('counter').innerHTML = x;
+        }
+        function restart() {
+            x = 0;
+            multi = 1;
+            click_upgrade_cost = 10;
+            document.getElementById('counter').innerHTML = x;
+            document.getElementById('click_upgrade_cost').innerHTML = "cost:" + " " + click_upgrade_cost;
+        }
+        function click_upgrade() {
+            if (x >= click_upgrade_cost) {
+                x = x - click_upgrade_cost;
+                multi = multi * 2;
+                document.getElementById('counter').innerHTML = x;
+                click_upgrade_cost = click_upgrade_cost * 2.2;
+                click_upgrade_cost = Math.round(click_upgrade_cost);
+                document.getElementById('click_upgrade_cost').innerHTML = "cost:" + " " + click_upgrade_cost;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="counter">0</p>
+    <button id="add" onclick="add_number()">+</button>
+    <button id="restart" onclick="restart()">restart</button>
+    <br>
+    <br>
+    <br>
+    <button id="click_upgrade" onclick="click_upgrade()">click upgrade</button>
+    <p id="click_upgrade_cost">cost: 10</p>
+</body>
+</html>
