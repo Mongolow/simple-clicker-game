@@ -1,0 +1,85 @@
+:root {
+  --bg: #f4f6fb;
+  --panel: #ffffff;
+  --line: #d9deea;
+  --text: #1e2533;
+  --accent: #1f6feb;
+  --accent-hover: #1557b5;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #f7f9ff 0%, var(--bg) 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+}
+
+
+#counter {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 60px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.addd {
+    justify-content: center;
+  display: flex;
+    align-items: center;
+  margin: 20px 0;
+}
+
+#add {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 30px 60px;
+    font-size: 24px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.upgrades {
+    justify-content: center;
+  display: flex;
+    align-items: center;
+  margin: 20px 0;
+  flex-direction: column;
+}
+
+#click_upgrade, #boost_click, #restart {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+#click_upgrade_cost, #current_multiplyer, #boost_click_cost, #boost_clicks {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.restart {
+    justify-content: center;
+  display: flex;
+    align-items: center;
+  margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+  #add {
+    padding: 20px 40px;
+    font-size: 18px;
+  }
+
+  #click_upgrade, #boost_click, #restart {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+}
