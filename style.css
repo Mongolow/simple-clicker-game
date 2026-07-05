@@ -49,7 +49,7 @@ body {
   flex-direction: column;
 }
 
-#click_upgrade, #boost_click, #restart {
+#click_upgrade, #boost_click, #restart, #auto_click {
     background-color: var(--accent);
     color: white;
     border: none;
