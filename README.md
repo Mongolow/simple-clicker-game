@@ -11,7 +11,9 @@ The score updates live in the interface.
 2. Buy `click upgrade` to increase single-click power.
 3. Buy `boost click` to get a x10 bonus for 5 clicks.
 4. Buy `autoclicker upgrade` to make automatic clicks faster.
-5. Use `restart` to reset the game state.
+5. Use `save` to store current progress in browser localStorage.
+6. Use `load` to restore saved progress.
+7. Use `restart` to reset the game state.
 
 ## Mechanics
 - `counter`: current number of points.
@@ -19,6 +21,12 @@ The score updates live in the interface.
 - `boost click`: temporary click bonus.
 - `autoclicker`: automatically adds points at a time interval.
 - When autoclicker reaches its limit, the cost label changes to `cost: maxed out`.
+- `save/load`: stores and restores game state using localStorage key `clicker_game_save`.
+
+## Save System
+- Save includes: points, click power, upgrade costs, boost clicks, autoclicker state and interval.
+- `save` writes the current state to localStorage.
+- `load` reads state from localStorage and restores active autoclicker timer when needed.
 
 ## Local run
 1. Clone the repository.
@@ -39,7 +47,7 @@ Alternatively, you can run a simple local server, for example using the Live Ser
 - Bootstrap 5 (CDN)
 
 ## Future improvements
-- save progress in localStorage
 - improve upgrade cost balancing
 - add click animations and cleaner UI
 - improve mobile layout
+- autosave on important actions and on page load

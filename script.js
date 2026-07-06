@@ -3,7 +3,7 @@ var multi = 1;
 var click_upgrade_cost = 10;
 var boost_clicks = 0;
 var boost_click_cost = 100;
-var autoclicker_cost = 1000;
+var autoclicker_cost = 100000;
 var autoclicker_interval = null;
 var auto_clicker_upgrade = 0;
 var autoclicker_maxed = false;
@@ -12,6 +12,7 @@ var autoclicker_base_interval = 10000;
 var autoclicker_min_interval = 100;
 var autoclicker_start_upgrade_value = 100;
 var autoclicker_upgrade_value = autoclicker_start_upgrade_value;
+const SAVE_KEY = "clicker_game_save";
 
 function add_number() {
     if (boost_clicks > 0) {
@@ -30,13 +31,13 @@ function restart() {
         clearInterval(autoclicker_timer_id);
         autoclicker_timer_id = null;
     }
-
+    
     x = 0;
     multi = 1;
     click_upgrade_cost = 10;
     boost_clicks = 0;
     boost_click_cost = 100;
-    autoclicker_cost = 1000;
+    autoclicker_cost = 100000;
     auto_clicker_upgrade = 0;
     autoclicker_upgrade_value = autoclicker_start_upgrade_value;
     autoclicker_interval = null;
@@ -117,4 +118,56 @@ function auto_click_upgrade() {
 
     document.getElementById('counter').innerHTML = x;
     document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+}
+
+function saveGame() {
+  const state = {
+    x,
+    multi,
+    click_upgrade_cost,
+    boost_clicks,
+    boost_click_cost,
+    autoclicker_cost,
+    auto_clicker_upgrade,
+    autoclicker_interval,
+    autoclicker_maxed,
+    autoclicker_upgrade_value
+  };
+  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+}
+
+function loadGame() {
+  const savedState = localStorage.getItem(SAVE_KEY);
+  if (!savedState) return;
+
+  try {
+    const state = JSON.parse(savedState);
+    x = state.x;
+    multi = state.multi;
+    click_upgrade_cost = state.click_upgrade_cost;
+    boost_clicks = state.boost_clicks;
+    boost_click_cost = state.boost_click_cost;
+    autoclicker_cost = state.autoclicker_cost;
+    auto_clicker_upgrade = state.auto_clicker_upgrade;
+    autoclicker_interval = state.autoclicker_interval;
+    autoclicker_maxed = state.autoclicker_maxed;
+    autoclicker_upgrade_value = state.autoclicker_upgrade_value;
+
+    document.getElementById('counter').innerHTML = x;
+    document.getElementById('current_multiplyer').innerHTML = "current click power: " + multi;
+    document.getElementById('click_upgrade_cost').innerHTML = "cost:" + " " + click_upgrade_cost;
+    document.getElementById('boost_clicks').innerHTML = "remaining boost clicks: " + boost_clicks;
+    document.getElementById('boost_click_cost').innerHTML = "cost: " + " " + boost_click_cost;
+    document.getElementById('autoclicker_cost').innerHTML = "cost: " + " " + autoclicker_cost;
+    document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+
+    if (autoclicker_interval !== null) {
+      if (autoclicker_timer_id !== null) {
+        clearInterval(autoclicker_timer_id);
+      }
+      autoclicker_timer_id = setInterval(add_number, autoclicker_interval);
+    }
+  } catch (error) {
+    console.error("Failed to load game state:", error);
+  }
 }
