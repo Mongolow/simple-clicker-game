@@ -117,7 +117,11 @@ function auto_click_upgrade() {
     autoclicker_timer_id = setInterval(add_number, autoclicker_interval);
 
     document.getElementById('counter').innerHTML = x;
-    document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+        if (autoclicker_interval === null) {
+            document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: null";
+        } else {
+            document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+        }
 }
 
 function saveGame() {
@@ -149,7 +153,11 @@ function loadGame() {
     boost_click_cost = state.boost_click_cost;
     autoclicker_cost = state.autoclicker_cost;
     auto_clicker_upgrade = state.auto_clicker_upgrade;
-    autoclicker_interval = state.autoclicker_interval;
+        if (state.autoclicker_interval === null || state.autoclicker_interval === "null" || state.autoclicker_interval === undefined) {
+            autoclicker_interval = null;
+        } else {
+            autoclicker_interval = Number(state.autoclicker_interval);
+        }
     autoclicker_maxed = state.autoclicker_maxed;
     autoclicker_upgrade_value = state.autoclicker_upgrade_value;
 
@@ -159,7 +167,12 @@ function loadGame() {
     document.getElementById('boost_clicks').innerHTML = "remaining boost clicks: " + boost_clicks;
     document.getElementById('boost_click_cost').innerHTML = "cost: " + " " + boost_click_cost;
     document.getElementById('autoclicker_cost').innerHTML = "cost: " + " " + autoclicker_cost;
-    document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+        if (autoclicker_interval === null || Number.isNaN(autoclicker_interval)) {
+            document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: null";
+            autoclicker_interval = null;
+        } else {
+            document.getElementById('autoclicker_interval').innerHTML = "autoclicker interval: " + autoclicker_interval + "ms";
+        }
 
     if (autoclicker_interval !== null) {
       if (autoclicker_timer_id !== null) {
