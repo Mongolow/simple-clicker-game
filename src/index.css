@@ -1,3 +1,12 @@
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+}
+
 :root {
   --bg: #f4f6fb;
   --panel: #ffffff;
@@ -5,13 +14,6 @@
   --text: #1e2533;
   --accent: #1f6feb;
   --accent-hover: #1557b5;
-}
-
-body {
-  margin: 0;
-  background: linear-gradient(180deg, #f7f9ff 0%, var(--bg) 100%);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text);
 }
 
 

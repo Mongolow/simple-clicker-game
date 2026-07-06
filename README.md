@@ -1,10 +1,10 @@
 # Clicker Game
 
-A simple browser-based clicker game built with HTML, CSS, and JavaScript.
+A desktop clicker game built with Electron, HTML, CSS, and JavaScript.
 
 ## Description
 The app lets you earn points by clicking and spending them on upgrades.
-The score updates live in the interface.
+The game runs as a desktop application through Electron and keeps its UI in the renderer process.
 
 ## How the game works
 1. Click the `+` button to gain points.
@@ -28,19 +28,45 @@ The score updates live in the interface.
 - `save` writes the current state to localStorage.
 - `load` reads state from localStorage and restores active autoclicker timer when needed.
 
-## Local run
+## Run Locally
 1. Clone the repository.
 2. Enter the project directory.
-3. Open `index.html` in your browser.
+3. Install dependencies:
 
-Alternatively, you can run a simple local server, for example using the Live Server extension in VS Code.
+```bash
+npm install
+```
+
+4. Start the Electron app:
+
+```bash
+npm start
+```
+
+## Build
+To create a packaged desktop build:
+
+```bash
+npm run package
+```
+
+To generate platform installers with Electron Forge:
+
+```bash
+npm run make
+```
 
 ## File structure
-- `index.html` - page structure and UI elements.
-- `style.css` - app styling.
-- `script.js` - game logic.
+- `src/index.js` - Electron main process and window creation.
+- `src/preload.js` - preload script for the renderer window.
+- `src/index.html` - game UI structure.
+- `src/index.css` - game styling.
+- `src/script.js` - clicker game logic and save/load handling.
+- `forge.config.js` - Electron Forge configuration.
 
 ## Technologies
+- Electron
+- Electron Forge
 - HTML5
 - CSS3
 - JavaScript (Vanilla JS)
