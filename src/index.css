@@ -68,6 +68,11 @@ body {
   }
 }
 
+#add:hover, #click_upgrade:hover, #boost_click:hover, #restart:hover, #auto_click:hover, #save:hover, #load:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 12px 28px rgba(31, 111, 235, 0.4);
+}
+
 .upgrades {
     justify-content: center;
   display: flex;
