@@ -14,7 +14,20 @@ var autoclicker_start_upgrade_value = 100;
 var autoclicker_upgrade_value = autoclicker_start_upgrade_value;
 const SAVE_KEY = "clicker_game_save";
 
+function playAddButtonAnimation() {
+    const addButton = document.getElementById('add');
+    if (!addButton) {
+        return;
+    }
+
+    addButton.classList.remove('is-clicked');
+    void addButton.offsetWidth;
+    addButton.classList.add('is-clicked');
+}
+
 function add_number() {
+    playAddButtonAnimation();
+
     if (boost_clicks > 0) {
         boost_clicks = boost_clicks - 1;
         x = x + multi * 10;
